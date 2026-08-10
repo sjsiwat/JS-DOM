@@ -54,6 +54,10 @@ function addTodo(text) {
 
 })
 
+    newSpan.addEventListener("click", () => {
+    newLi.classList.toggle("completed")
+})
+
 }
 
 
@@ -72,3 +76,8 @@ newBtn.addEventListener("click", () => {
 // TODO 5: When the todo-text span inside an <li> is clicked, toggle the
 // "completed" class on the <li>. (Attach this listener when you create the
 // span in TODO 3.)
+
+
+newSpan.addEventListener("click", () => {
+    newLi.classList.toggle("completed")
+})
