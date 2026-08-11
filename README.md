@@ -19,7 +19,12 @@ Work through these in order. Each folder is self-contained — open its
 
 Stuck? Check out the `solution` branch (`git checkout solution`) to compare.
 
+<p align="center">
 
+  <img src="./game_clicker/img/s0.png" width="250">
+
+
+</p>
 
 
 
