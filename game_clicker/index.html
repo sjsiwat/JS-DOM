@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My Clicker</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <h1>Try to click!</h1>
+
+    <div id="stats">
+      <p id="score">0</p>
+      <p id="auto-info">Auto : <span id="auto">0</span> / sec</p>
+    </div>
+
+    <div id="click-area">
+      <button id="clickerpic">
+        <img id="clickerpic-img" src="img/gengar01.png" alt="gengar1" />
+      </button>
+    </div>
+
+    <div id="layout-btn">
+      <button id="reset">Reset</button>
+    </div>
+
+<hr>
+
+    <div class="upgrade-list">
+      <button class="upgrade-item" id="upgrade">
+        <span class="item-name">Click Power</span>
+        <span class="item-desc">+3 per click</span>
+        <span class="item-cost"><span id="cost">10 </span>point</span>
+      </button>
+
+      <button class="upgrade-item" id="buy-auto">
+        <span class="item-name">Auto Clicker</span>
+        <span class="item-desc">+5 per sec</span>
+        <span class="item-cost"><span id="auto-cost">50</span> point</span>
+      </button>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
