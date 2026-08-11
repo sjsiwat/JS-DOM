@@ -24,7 +24,6 @@ const clickArea = document.getElementById("click-area");
 
 
 
-
 resetBtn.addEventListener("click" , () => {
     point = 0;
     clickPower = 1;
@@ -35,18 +34,34 @@ resetBtn.addEventListener("click" , () => {
     render();
 })
 
-clickPic.addEventListener("pointerdown", () => {
-    clickPicImg.src = "img/gengar02.png"
+
+function setImg(name) {
+    clickPicImg.src = "img/" + name + ".png";
+}
+    
+    /* 
+    แบบเขียนย่อ เพราะกำหนดฟังชั่น setImg แล้ว วันหลังถ้าย้ายที่เก็บรูป
+    แค่เปลี่ยน "img/" เป็นที่เก็บอื่น 
+    clickPicImg.src = "img/" + "s2" + ".png";
+                        └────── ต่อสตริงกัน ──────┘
+    clickPicImg.src = "img/s2.png";   
+    
+  
+    แบบเดิม เขียนเต็ม แต่ถ้าวันหลังแก้ย้ายรูปไปที่อื่น ต้องไล่แก้หมด
+    clickPic.addEventListener("pointerdown", () => {
+    clickPicImg.src = "img/s3.png"
 
 })
+    
+    
+    */
 
-clickPic.addEventListener("pointerup", () => {
-    clickPicImg.src = "img/gengar01.png"
-})
 
-clickPic.addEventListener("pointerleave", () => {
-    clickPicImg.src = "img/gengar01.png"
-})
+
+clickPic.addEventListener("pointerenter", () => setImg("s2"));
+clickPic.addEventListener("pointerdown",  () => setImg("s3"));
+clickPic.addEventListener("pointerup",    () => setImg("s2"));
+clickPic.addEventListener("pointerleave", () => setImg("s1"));
 
 
 
@@ -68,6 +83,7 @@ clickPic.addEventListener("click", (e)=> {
     
     // console.log(point) 
 })
+
 
 upgradeBtn.addEventListener("click", () => {
     if (point < upgradeCost) return;

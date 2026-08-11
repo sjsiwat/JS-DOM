@@ -54,8 +54,8 @@ h1 {
 }
 
 #clickerpic {
-  width: 280px;
-  height: 280px;
+  width: 260px;
+  height: 330px;
   border: none;
   background: none;
   padding: 0;
@@ -75,7 +75,7 @@ h1 {
   user-select: none;
   -webkit-user-drag: none;
   filter: drop-shadow(0 0 28px rgba(167, 139, 250, 0.35));
-  border-radius: 100%;
+  border-radius: 15%;
 }
 
 .float-num {
@@ -83,7 +83,7 @@ h1 {
   pointer-events: none;
   font-weight: 700;
   font-size: 20px;
-  color: #a78bfa;
+  color: #2eea4a;
   text-shadow: 0 0 8px rgba(167, 139, 250, 0.6);
   animation: floatUp 1.2s ease-out forwards;
 }
