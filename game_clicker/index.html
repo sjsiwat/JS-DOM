@@ -9,35 +9,53 @@
   <body>
     <h1>click me if you can!</h1>
 
-    <div id="stats">
-      <p id="score">0</p>
-      <p id="auto-info">Auto click : <span id="auto">0</span> / sec</p>
-    </div>
+    <div class="game-wrap">
+      <div class="stat-panel">
+        <h2>Your Build</h2>
+        <div class="stat-row">
+          <span>Click Power</span><span id="stat-power">1</span>
+        </div>
+        <div class="stat-row">
+          <span>Auto / sec</span><span id="stat-auto">0</span>
+        </div>
+        <div class="stat-row">
+          <span>Upgrades Bought</span><span id="stat-bought">0</span>
+        </div>
+        <div class="stat-row">
+          <span>Total Clicks</span><span id="stat-clicks">0</span>
+        </div>
+      </div>
 
-    <div id="click-area">
-      <button id="clickerpic">
-        <img id="clickerpic-img" src="img/s0.png" alt="gengar1" />
-      </button>
-    </div>
+      <div class="center-col">
+        <div id="stats">
+          <p id="score">0</p>
+          <p id="auto-info">Auto click : <span id="auto">0</span> / sec</p>
+        </div>
 
-    <div id="layout-btn">
-      <button id="reset">Reset</button>
-    </div>
+        <div id="click-area">
+          <button id="clickerpic">
+            <img id="clickerpic-img" src="img/s0.png" alt="dev" />
+          </button>
+        </div>
 
-<hr>
+        <div id="layout-btn">
+          <button id="reset">Reset</button>
+        </div>
+      </div>
 
-    <div class="upgrade-list">
-      <button class="upgrade-item" id="upgrade">
-        <span class="item-name">Click Power</span>
-        <span class="item-desc">+3 per click</span>
-        <span class="item-cost"><span id="cost">10</span>point</span>
-      </button>
+      <div class="upgrade-list">
+        <button class="upgrade-item" id="upgrade">
+          <span class="item-name">Click Power</span>
+          <span class="item-desc">+3 per click</span>
+          <span class="item-cost"><span id="cost">10</span> point</span>
+        </button>
 
-      <button class="upgrade-item" id="buy-auto">
-        <span class="item-name">Auto Clicker</span>
-        <span class="item-desc">+5 per sec</span>
-        <span class="item-cost"><span id="auto-cost">50</span> point</span>
-      </button>
+        <button class="upgrade-item" id="buy-auto">
+          <span class="item-name">Auto Clicker</span>
+          <span class="item-desc">+5 per sec</span>
+          <span class="item-cost"><span id="auto-cost">50</span> point</span>
+        </button>
+      </div>
     </div>
 
     <script src="script.js"></script>

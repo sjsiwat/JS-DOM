@@ -183,3 +183,56 @@ hr {
   color: #737373;
   margin-top: 4px;
 }
+
+/*  จัดกล่อง stat ปุ่มreset รูป */
+.game-wrap {
+  display: grid;
+  grid-template-columns: 1fr 1.4fr 1fr;
+  gap: 24px;
+  max-width: 1000px;
+  margin: 0 auto;
+  align-items: start;
+}
+
+@media (max-width: 800px) {
+  .game-wrap { grid-template-columns: 1fr; }
+}
+
+.stat-panel {
+  background: #242424;
+  border: 1px solid #3a3a3a;
+  border-radius: 12px;
+  padding: 20px;
+  text-align: left;
+}
+
+.stat-panel h2 {
+  font-size: 13px;
+  font-weight: 400;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #737373;
+  margin: 0 0 16px;
+}
+
+.stat-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 8px 0;
+  border-bottom: 1px solid #2a2a2a;
+  font-size: 13px;
+  color: #737373;
+}
+
+.stat-row:last-child {
+  border-bottom: none;
+}
+
+.stat-row span:last-child {
+  color: #a78bfa;
+  font-weight: 700;
+}
+
+.upgrade-list {
+  max-width: none;
+}
