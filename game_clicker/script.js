@@ -61,7 +61,7 @@ function setImg(name) {
 clickPic.addEventListener("pointerenter", () => setImg("s2"));
 clickPic.addEventListener("pointerdown",  () => setImg("s3"));
 clickPic.addEventListener("pointerup",    () => setImg("s2"));
-clickPic.addEventListener("pointerleave", () => setImg("s1"));
+clickPic.addEventListener("pointerleave", () => setImg("s0"));
 
 
 
