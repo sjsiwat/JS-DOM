@@ -48,6 +48,7 @@ h1 {
 
 /* clicker */
 
+
 #click-area {
   position: relative;
   display: inline-block;
@@ -83,10 +84,12 @@ h1 {
   pointer-events: none;
   font-weight: 700;
   font-size: 20px;
-  color: #2eea4a;
   text-shadow: 0 0 8px rgba(167, 139, 250, 0.6);
   animation: floatUp 1.2s ease-out forwards;
 }
+
+.click-num { color: #2eea4a; }
+.auto-num  { color: #ff6ec7; }
 
 @keyframes floatUp {
   from { transform: translateY(0); opacity: 1; }
@@ -235,4 +238,36 @@ hr {
 
 .upgrade-list {
   max-width: none;
+}
+
+
+/* log box */
+
+#terminal {
+  height: 160px;
+  overflow-y: auto;
+  background: #0f0f0f;
+  border: 1px solid #3a3a3a;
+  border-radius: 12px;
+  padding: 12px 16px;
+  margin-top: 24px;
+  text-align: left;
+  font-size: 12px;
+  color: #4ade80;
+}
+
+.log-line {
+  animation: fadeIn 0.3s ease-out;
+  padding: 1px 0;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateX(-8px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+
+.footer-row {
+  display: flex;
+  justify-content: space-between;
 }

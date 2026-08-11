@@ -9,6 +9,8 @@ let upgradeCost = Number(localStorage.getItem("upgradeCost")) || 10;
 let autoPower = Number(localStorage.getItem("autoPower")) || 0;
 let autoCost = Number(localStorage.getItem("autoCost")) || 50;
 
+let totalClicks = Number(localStorage.getItem("totalClicks")) || 0;
+let upgradesBought = Number(localStorage.getItem("upgradesBought")) || 0;
 
 const autoEl = document.getElementById("auto")
 const autoCostEl = document.getElementById("auto-cost")
@@ -23,6 +25,25 @@ const resetBtn = document.getElementById("reset")
 const clickArea = document.getElementById("click-area");
 
 
+const statPower = document.getElementById("stat-power");
+const statAuto = document.getElementById("stat-auto");
+const statBought = document.getElementById("stat-bought");
+const statClicks = document.getElementById("stat-clicks");
+
+// ข้อความในกล่่องterminal
+const logLines = [
+  "npm run dev",
+  "git commit -m 'fix bug'",
+  "console.log(point)",
+  "> compiled successfully",
+  "fetching data...",
+  "TypeError: undefined",
+  "deploy to production",
+  "git push origin main",
+];
+
+const terminal = document.getElementById("terminal");
+
 
 resetBtn.addEventListener("click" , () => {
     point = 0;
@@ -30,6 +51,8 @@ resetBtn.addEventListener("click" , () => {
     upgradeCost = 10;
     autoPower = 0;
     autoCost = 50;
+    totalClicks = 0;
+    upgradesBought = 0;
 
     render();
 })
@@ -67,19 +90,11 @@ clickPic.addEventListener("pointerleave", () => setImg("s0"));
 
 clickPic.addEventListener("click", (e)=> {
     point += clickPower
+    totalClicks += 1;
+    addLog();
     render();
 
-    const num = document.createElement("span")
-    num.className = "float-num"
-    num.textContent = "+" + clickPower
-    num.style.left = e.offsetX + "px";
-    num.style.top = e.offsetY + "px"
-
-    clickArea.appendChild(num)
-
-    num.addEventListener("animationend", () => {
-        num.remove();
-    })
+    floatNum("+" + clickPower, "click-num", e.offsetX, e.offsetY);
     
     // console.log(point) 
 })
@@ -91,7 +106,7 @@ upgradeBtn.addEventListener("click", () => {
     point -= upgradeCost
     clickPower += 3
     upgradeCost = Math.floor(upgradeCost * 1.5)
-
+    upgradesBought += 1;
     render()
 })
 
@@ -100,17 +115,48 @@ buyAutoBtn.addEventListener("click", () => {
 
     point -= autoCost
     autoPower += 5;
-    autoCost = Math.floor(autoCost * 1.5)
-
+    autoCost = Math.floor(autoCost * 2)
+    upgradesBought += 1;
     render();
 })
 
+function floatNum(text, className, x, y) {
+
+  const num = document.createElement("span");
+  num.classList.add("float-num", className);
+  num.textContent = text;
+  num.style.left = x + "px";
+  num.style.top = y + "px";
+  clickArea.appendChild(num);
+  num.addEventListener("animationend", () => num.remove());
+}
+
+
 setInterval(() => {
-    console.log("tick", autoPower, point);
+    
     point += autoPower;
     render();
 
+    if (autoPower > 0) {
+  floatNum("+" + autoPower, "auto-num", 40 + Math.random() * 180, 40);
+}
+
 },1000);
+
+
+function addLog() {
+  const line = document.createElement("div");
+  line.className = "log-line";
+  line.textContent = "$ " + logLines[Math.floor(Math.random() * logLines.length)];
+
+  terminal.appendChild(line);
+  terminal.scrollTop = terminal.scrollHeight;
+
+  if (terminal.children.length > 40) {
+    terminal.firstChild.remove();
+  }
+}
+
 
 
 function render() {
@@ -118,6 +164,10 @@ function render() {
     costToUpgrade.textContent = upgradeCost
     autoEl.textContent = autoPower
     autoCostEl.textContent = autoCost;
+    statPower.textContent = clickPower;
+    statAuto.textContent = autoPower;
+    statBought.textContent = upgradesBought;
+    statClicks.textContent = totalClicks;
 
     upgradeBtn.disabled = point < upgradeCost
     buyAutoBtn.disabled = point < autoCost
@@ -127,8 +177,14 @@ function render() {
     localStorage.setItem("upgradeCost", upgradeCost)
     localStorage.setItem("autoPower", autoPower)
     localStorage.setItem("autoCost", autoCost)
+    localStorage.setItem("totalClicks", totalClicks)
+    localStorage.setItem("upgradeBought", upgradesBought)
 
 }
+
+
+
+
 
 
 render();
