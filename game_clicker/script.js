@@ -1,6 +1,6 @@
-const clickPic = document.getElementById("clickerpic")
-const clickPicImg = document.getElementById("clickerpic-img")
+// === STATE ===
 
+// โหลดแต้ม(point)ที่เซฟไว้จากเครื่อง แปลงเป็นตัวเลข ถ้าไม่มีข้อมูลให้เริ่มที่ 0
 let point = Number(localStorage.getItem("point")) || 0;
 
 let clickPower = Number(localStorage.getItem("clickPower")) || 1;
@@ -11,6 +11,10 @@ let autoCost = Number(localStorage.getItem("autoCost")) || 50;
 
 let totalClicks = Number(localStorage.getItem("totalClicks")) || 0;
 let upgradesBought = Number(localStorage.getItem("upgradesBought")) || 0;
+
+// element
+const clickPic = document.getElementById("clickerpic")
+const clickPicImg = document.getElementById("clickerpic-img")
 
 const autoEl = document.getElementById("auto")
 const autoCostEl = document.getElementById("auto-cost")
