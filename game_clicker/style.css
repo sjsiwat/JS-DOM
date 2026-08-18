@@ -48,7 +48,6 @@ h1 {
 
 /* clicker */
 
-
 #click-area {
   position: relative;
   display: inline-block;
@@ -88,12 +87,22 @@ h1 {
   animation: floatUp 1.2s ease-out forwards;
 }
 
-.click-num { color: #2eea4a; }
-.auto-num  { color: #ff6ec7; }
+.click-num {
+  color: #2eea4a;
+}
+.auto-num {
+  color: #ff6ec7;
+}
 
 @keyframes floatUp {
-  from { transform: translateY(0); opacity: 1; }
-  to   { transform: translateY(-70px); opacity: 0; }
+  from {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  to {
+    transform: translateY(-70px);
+    opacity: 0;
+  }
 }
 
 /* buttons */
@@ -198,7 +207,9 @@ hr {
 }
 
 @media (max-width: 800px) {
-  .game-wrap { grid-template-columns: 1fr; }
+  .game-wrap {
+    grid-template-columns: 1fr;
+  }
 }
 
 .stat-panel {
@@ -240,7 +251,6 @@ hr {
   max-width: none;
 }
 
-
 /* log box */
 
 #terminal {
@@ -262,10 +272,15 @@ hr {
 }
 
 @keyframes fadeIn {
-  from { opacity: 0; transform: translateX(-8px); }
-  to   { opacity: 1; transform: translateX(0); }
+  from {
+    opacity: 0;
+    transform: translateX(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
 }
-
 
 .footer-row {
   display: flex;

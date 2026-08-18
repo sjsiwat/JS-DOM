@@ -13,21 +13,19 @@ let totalClicks = Number(localStorage.getItem("totalClicks")) || 0;
 let upgradesBought = Number(localStorage.getItem("upgradesBought")) || 0;
 
 // element
-const clickPic = document.getElementById("clickerpic")
-const clickPicImg = document.getElementById("clickerpic-img")
+const clickPic = document.getElementById("clickerpic");
+const clickPicImg = document.getElementById("clickerpic-img");
 
-const autoEl = document.getElementById("auto")
-const autoCostEl = document.getElementById("auto-cost")
-const buyAutoBtn = document.getElementById("buy-auto")
+const autoEl = document.getElementById("auto");
+const autoCostEl = document.getElementById("auto-cost");
+const buyAutoBtn = document.getElementById("buy-auto");
 
-const costToUpgrade = document.getElementById("cost")
-const upgradeBtn = document.getElementById("upgrade")
+const costToUpgrade = document.getElementById("cost");
+const upgradeBtn = document.getElementById("upgrade");
 
-
-const pointScore = document.getElementById("score")
-const resetBtn = document.getElementById("reset")
+const pointScore = document.getElementById("score");
+const resetBtn = document.getElementById("reset");
 const clickArea = document.getElementById("click-area");
-
 
 const statPower = document.getElementById("stat-power");
 const statAuto = document.getElementById("stat-auto");
@@ -48,25 +46,23 @@ const logLines = [
 
 const terminal = document.getElementById("terminal");
 
+resetBtn.addEventListener("click", () => {
+  point = 0;
+  clickPower = 1;
+  upgradeCost = 10;
+  autoPower = 0;
+  autoCost = 50;
+  totalClicks = 0;
+  upgradesBought = 0;
 
-resetBtn.addEventListener("click" , () => {
-    point = 0;
-    clickPower = 1;
-    upgradeCost = 10;
-    autoPower = 0;
-    autoCost = 50;
-    totalClicks = 0;
-    upgradesBought = 0;
-
-    render();
-})
-
+  render();
+});
 
 function setImg(name) {
-    clickPicImg.src = "img/" + name + ".png";
+  clickPicImg.src = "img/" + name + ".png";
 }
-    
-    /* 
+
+/* 
     แบบเขียนย่อ เพราะกำหนดฟังชั่น setImg แล้ว วันหลังถ้าย้ายที่เก็บรูป
     แค่เปลี่ยน "img/" เป็นที่เก็บอื่น 
     clickPicImg.src = "img/" + "s2" + ".png";
@@ -83,49 +79,43 @@ function setImg(name) {
     
     */
 
-
-
 clickPic.addEventListener("pointerenter", () => setImg("s2"));
-clickPic.addEventListener("pointerdown",  () => setImg("s3"));
-clickPic.addEventListener("pointerup",    () => setImg("s2"));
+clickPic.addEventListener("pointerdown", () => setImg("s3"));
+clickPic.addEventListener("pointerup", () => setImg("s2"));
 clickPic.addEventListener("pointerleave", () => setImg("s0"));
 
+clickPic.addEventListener("click", (e) => {
+  point += clickPower;
+  totalClicks += 1;
+  addLog();
+  render();
 
+  floatNum("+" + clickPower, "click-num", e.offsetX, e.offsetY);
 
-clickPic.addEventListener("click", (e)=> {
-    point += clickPower
-    totalClicks += 1;
-    addLog();
-    render();
-
-    floatNum("+" + clickPower, "click-num", e.offsetX, e.offsetY);
-    
-    // console.log(point) 
-})
-
+  // console.log(point)
+});
 
 upgradeBtn.addEventListener("click", () => {
-    if (point < upgradeCost) return;
+  if (point < upgradeCost) return;
 
-    point -= upgradeCost
-    clickPower += 3
-    upgradeCost = Math.floor(upgradeCost * 1.5)
-    upgradesBought += 1;
-    render()
-})
+  point -= upgradeCost;
+  clickPower += 3;
+  upgradeCost = Math.floor(upgradeCost * 1.5);
+  upgradesBought += 1;
+  render();
+});
 
 buyAutoBtn.addEventListener("click", () => {
-    if (point < autoCost) return;
+  if (point < autoCost) return;
 
-    point -= autoCost
-    autoPower += 5;
-    autoCost = Math.floor(autoCost * 2)
-    upgradesBought += 1;
-    render();
-})
+  point -= autoCost;
+  autoPower += 5;
+  autoCost = Math.floor(autoCost * 2);
+  upgradesBought += 1;
+  render();
+});
 
 function floatNum(text, className, x, y) {
-
   const num = document.createElement("span");
   num.classList.add("float-num", className);
   num.textContent = text;
@@ -135,23 +125,20 @@ function floatNum(text, className, x, y) {
   num.addEventListener("animationend", () => num.remove());
 }
 
-
 setInterval(() => {
-    
-    point += autoPower;
-    render();
+  point += autoPower;
+  render();
 
-    if (autoPower > 0) {
-  floatNum("+" + autoPower, "auto-num", 40 + Math.random() * 180, 40);
-}
-
-},1000);
-
+  if (autoPower > 0) {
+    floatNum("+" + autoPower, "auto-num", 40 + Math.random() * 180, 40);
+  }
+}, 1000);
 
 function addLog() {
   const line = document.createElement("div");
   line.className = "log-line";
-  line.textContent = "$ " + logLines[Math.floor(Math.random() * logLines.length)];
+  line.textContent =
+    "$ " + logLines[Math.floor(Math.random() * logLines.length)];
 
   terminal.appendChild(line);
   terminal.scrollTop = terminal.scrollHeight;
@@ -161,35 +148,26 @@ function addLog() {
   }
 }
 
-
-
 function render() {
-    pointScore.textContent = point
-    costToUpgrade.textContent = upgradeCost
-    autoEl.textContent = autoPower
-    autoCostEl.textContent = autoCost;
-    statPower.textContent = clickPower;
-    statAuto.textContent = autoPower;
-    statBought.textContent = upgradesBought;
-    statClicks.textContent = totalClicks;
+  pointScore.textContent = point;
+  costToUpgrade.textContent = upgradeCost;
+  autoEl.textContent = autoPower;
+  autoCostEl.textContent = autoCost;
+  statPower.textContent = clickPower;
+  statAuto.textContent = autoPower;
+  statBought.textContent = upgradesBought;
+  statClicks.textContent = totalClicks;
 
-    upgradeBtn.disabled = point < upgradeCost
-    buyAutoBtn.disabled = point < autoCost
+  upgradeBtn.disabled = point < upgradeCost;
+  buyAutoBtn.disabled = point < autoCost;
 
-    localStorage.setItem("point", point)
-    localStorage.setItem("clickPower", clickPower)
-    localStorage.setItem("upgradeCost", upgradeCost)
-    localStorage.setItem("autoPower", autoPower)
-    localStorage.setItem("autoCost", autoCost)
-    localStorage.setItem("totalClicks", totalClicks)
-    localStorage.setItem("upgradeBought", upgradesBought)
-
+  localStorage.setItem("point", point);
+  localStorage.setItem("clickPower", clickPower);
+  localStorage.setItem("upgradeCost", upgradeCost);
+  localStorage.setItem("autoPower", autoPower);
+  localStorage.setItem("autoCost", autoCost);
+  localStorage.setItem("totalClicks", totalClicks);
+  localStorage.setItem("upgradeBought", upgradesBought);
 }
 
-
-
-
-
-
 render();
-
